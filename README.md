@@ -17,6 +17,16 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
+## Running the container
+
+```bash
+# start the container
+$ yarn up
+
+# stop the container
+$ yarn down
+```
+
 ## Use on browser
 ```html
 http://localhost:3000/
@@ -33,6 +43,16 @@ $ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
+```
+
+## MongoDB Database Connection Instructions:
+
+```bash
+
+$ cp docker/.env.template docker/.env
+$ <edit> .env
+
+# set username and password in the created .env file
 ```
 
 ## Tasks
