@@ -1,12 +1,14 @@
 version: '3.8'
 
 services:
-  mongodb_container:
-    container_name: bianca_db
-    hostname: bianca_db
-    image: mongo:latest
+  mysql_container:
+    container_name: allwell_db
+    hostname: allwell
+    image: mysql:latest
+    restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_TCP_PORT: 3308
     ports:
-      - 27018:27017
+      - "3308:3308"

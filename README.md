@@ -20,7 +20,7 @@ $ yarn run start:prod
 ## Running the container
 
 ```bash
-# start the container
+# start the container // remember to put the .env file in the root directory
 $ yarn up
 
 # stop the container
@@ -45,15 +45,101 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
-## MongoDB Database Connection Instructions:
+## mySQL Database Connection Instructions:
 
 ```bash
+# copy the .env.template file to .env
+$ cp docker/.env.template .env
 
-$ cp docker/.env.template docker/.env
-$ <edit> .env
+# edit the .env file and set the mySQL configuration variables
 
-# set username and password in the created .env file
+# make sure Docker Desktop is running, then start the container if it's not already running
+$ yarn up
+
+# start the application and connect to the database
+$ yarn start
+
+# (optional) connect to the mySQL shell of the database
+$ docker exec -it allwell_db bash
 ```
+## API Paths
+
+The API has the following paths:
+
+## /sum 
+This path accepts a POST request with a JSON body containing two numbers, number1 and number2. The API returns the sum of the two numbers.
+
+Example request body:
+
+```
+{
+  "number1": 40,
+  "number2": 2
+}
+```
+Example response body:
+```
+{
+  "result": 42
+}
+```
+## /notes
+This path accepts GET, POST, PATCH, and DELETE requests for managing notes. The API returns a list of notes in JSON format.
+
+Example response body:
+```
+[
+  {
+    "id": 1,
+    "title": "Note 1",
+    "content": "This is the content of note 1"
+  },
+  {
+    "id": 2,
+    "title": "Note 2",
+    "content": "This is the content of note 2"
+  }
+]
+```
+
+## GET /notes
+This path returns a list of all notes.
+
+## GET /notes/:id
+This path returns the note with the given ID.
+
+Example response body:
+```
+{
+  "id": 1,
+  "title": "Note 1",
+  "content": "This is the content of note 1"
+}
+```
+
+## POST /notes
+This path creates a new note with the given title and content.
+
+Example request body:
+```
+{
+  "title": "Note 3",
+  "content": "This is the content of note 3"
+}
+```
+## PATCH /notes/:id
+This path updates the note with the given ID with the new title and content.
+
+Example request body:
+```
+{
+  "title": "Note 3 (updated)",
+  "content": "This is the updated content of note 3"
+}
+```
+
+## DELETE /notes/:id
+This path deletes the note with the given ID.
 
 ## Tasks
 - clone this repo
