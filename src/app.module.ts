@@ -26,7 +26,7 @@ It provides several providers including the AppService and SumService.
       database: process.env.MYSQL_DATABASE,
       username: 'root',
       password: process.env.MYSQL_ROOT_PASSWORD,
-      entities: [__dirname + '/**/.entity{.ts,.js}'],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // turn to false during production stage (TBA: Migrations)
     }),
     NotesModule,
