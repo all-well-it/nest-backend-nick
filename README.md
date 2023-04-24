@@ -17,13 +17,13 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Running the container
+## Running the containers
 
 ```bash
-# start the container // remember to put the .env file in the root directory
+# start the containers // remember to put the .env file in the root directory
 $ yarn up
 
-# stop the container
+# stop the containers
 $ yarn down
 ```
 
@@ -53,11 +53,8 @@ $ cp docker/.env.template .env
 
 # edit the .env file and set the mySQL configuration variables
 
-# make sure Docker Desktop is running, then start the container if it's not already running
+# make sure Docker Desktop is running, then start the containers if they're not already running (this starts the database and application containers)
 $ yarn up
-
-# start the application and connect to the database
-$ yarn start
 
 # (optional) connect to the mySQL shell of the database
 $ docker exec -it allwell_db bash

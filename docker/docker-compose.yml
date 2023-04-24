@@ -1,14 +1,30 @@
 version: '3.8'
 
 services:
+  app_container:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: nestjs_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql_container
+    environment:
+      DB_HOST: "mysql_container"
   mysql_container:
     container_name: allwell_db
     hostname: allwell
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: \${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: \${MYSQL_DATABASE}
       MYSQL_TCP_PORT: 3308
     ports:
       - "3308:3308"
+    volumes:
+      - "mysql_data:/var/lib/mysql"
+
+volumes:
+  mysql_data:
