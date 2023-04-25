@@ -4,7 +4,10 @@ FROM node:18-alpine
 # Set the working directory to /
 WORKDIR /
 
-# Copy the package.json and package-lock.json files to the working directory
+# Copy the yarn.lock file to the working directory
+COPY yarn.lock ./
+
+# Copy the package.json to the working directory
 COPY package*.json ./
 
 # Install the dependencies for the application using yarn
@@ -20,4 +23,4 @@ RUN yarn build
 EXPOSE 3000
 
 # Define the default command to run when the container starts
-CMD ["yarn", "run", "start"]
+CMD ["yarn", "run", "start:dev"]
