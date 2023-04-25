@@ -7,17 +7,14 @@ WORKDIR /
 # Copy the yarn.lock file to the working directory
 COPY yarn.lock ./
 
-# Copy the package.json to the working directory
-COPY package*.json ./
+# Copy the .env file to the working directory
+COPY .env ./
+
+# Copy the *.json to the working directory
+COPY *.json ./
 
 # Install the dependencies for the application using yarn
 RUN yarn install
-
-# Copy the application code to the working directory
-COPY . .
-
-# Build the application
-RUN yarn build
 
 # Expose port 3000 
 EXPOSE 3000
