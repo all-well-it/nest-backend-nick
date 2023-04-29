@@ -13,8 +13,14 @@ COPY .env ./
 # Copy the *.json to the working directory
 COPY *.json ./
 
+# Copy all files to the working directory
+COPY . .
+
 # Install the dependencies for the application using yarn
 RUN yarn install
+
+# Run the build command for the Node.js application
+RUN yarn build 
 
 # Expose port 3000 
 EXPOSE 3000
