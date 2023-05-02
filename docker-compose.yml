@@ -2,18 +2,14 @@ version: '3.8'
 
 services:
   app_container:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
+    build: .
     container_name: nestjs_app
     ports:
       - "3000:3000"
-    depends_on:
-      - mysql_container
     environment:
       DB_HOST: "mysql_container"
     volumes:
-    - "app_data:/app/data"
+    - "./src/:/app/src/"
   mysql_container:
     container_name: allwell_db
     hostname: allwell
@@ -30,4 +26,3 @@ services:
 
 volumes:
   mysql_data:
-  app_data:
