@@ -21,7 +21,7 @@ It provides several providers including the AppService and SumService.
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'mysql_container',
       port: 3308,
       database: process.env.MYSQL_DATABASE,
       username: 'root',
