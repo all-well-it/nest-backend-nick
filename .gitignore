@@ -39,6 +39,3 @@ lerna-debug.log*
 
 # docker data
 docker/data
-
-# package-lock
-package-lock
